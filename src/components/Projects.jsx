@@ -42,14 +42,14 @@ const Portfolio = () => {
       description: 'Full-featured online store with payment integration.',
       languages: 'React, Node.js, MongoDB'
     },
-    {
-      id: 5,
-      category: 'filter-graphics',
-      title: 'Digital Art Collection',
-      image: portfolio11,
-      description: 'Series of digital artworks exploring AI-generated art.',
-      languages: 'Procreate, Photoshop, AI Tools'
-    }
+    // {
+    //   id: 5,
+    //   category: 'filter-graphics',
+    //   title: 'Digital Art Collection',
+    //   image: portfolio11,
+    //   description: 'Series of digital artworks exploring AI-generated art.',
+    //   languages: 'Procreate, Photoshop, AI Tools'
+    // }
   ];
 
   const filteredItems = filter === '*' 
