@@ -1,0 +1,459 @@
+/* App.css */
+.App {
+  font-family: 'Roboto', 'Noto Sans', sans-serif;
+}
+
+.header .logo {
+  line-height: 1;
+}
+
+.header .logo img {
+  max-height: 36px;
+  margin-right: 8px;
+}
+
+.header .logo h1 {
+  font-size: 24px;
+  margin: 0;
+  padding-left: 5px;
+  font-weight: 500;
+  color: var(--heading-color);
+}
+
+/* nav bar styling */
+/* ===== MOBILE NAVIGATION STYLES ===== */
+
+/* Hide mobile toggle by default on large screens */
+.mobile-nav-toggle {
+  display: none;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  z-index: 1001;
+  background: none;
+  border: none;
+  padding: 10px;
+}
+
+/* Show mobile toggle on small screens */
+@media (max-width: 1199px) {
+  .mobile-nav-toggle {
+    display: block;
+    order: 3; /* Position it properly in flex layout */
+    margin-left: auto;
+  }
+
+  /* Hide regular navigation on mobile */
+  .navmenu ul {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    z-index: 1000;
+    margin: 0;
+    list-style: none;
+  }
+
+  /* Show navigation when mobile nav is active */
+  body.mobile-nav-active .navmenu ul {
+    display: flex;
+    animation: slideIn 0.3s ease-out;
+  }
+
+  /* Mobile navigation overlay */
+  .navmenu::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+
+  body.mobile-nav-active .navmenu::before {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Mobile navigation links */
+  .navmenu ul li {
+    margin: 1rem 0;
+    text-align: center;
+    width: 100%;
+  }
+
+  .navmenu ul li a {
+    color:#121212;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 0.8rem 2rem;
+    display: block;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+  }
+
+  .navmenu ul li a:hover {
+    background: rgba(0, 206, 200, 0.2);
+    color: #00CEC8 !important;
+    transform: translateX(5px);
+  }
+
+  /* Dropdown styles for mobile */
+  .navmenu .dropdown > ul {
+    display: none;
+    padding-left: 1.5rem;
+    margin: 0.5rem 0;
+  }
+
+  .navmenu .dropdown.active > ul {
+    display: block;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .navmenu .dropdown > a {
+    position: relative;
+  }
+
+  .navmenu .dropdown > a .bi-chevron-down {
+    transition: transform 0.3s ease;
+  }
+
+  .navmenu .dropdown.active > a .bi-chevron-down {
+    transform: rotate(180deg);
+  }
+
+  /* Dark mode toggle button adjustments */
+  #toggleBtn {
+    margin-left: 15px;
+    z-index: 1002;
+  }
+}
+
+/* Animation keyframes */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 500px;
+  }
+}
+
+/* Header layout adjustments for mobile */
+@media (max-width: 1199px) {
+  .header-container {
+    padding: 0.5rem 1rem;
+  }
+
+  .logo {
+    z-index: 1002;
+  }
+
+  .logo img {
+    height: 35px;
+  }
+
+  .sitename {
+    font-size: 1.2rem;
+    margin-left: 0.5rem;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 576px) {
+  .navmenu ul li a {
+    font-size: 1.1rem;
+    padding: 0.6rem 1.5rem;
+  }
+
+  .logo img {
+    height: 30px;
+  }
+
+  .sitename {
+    font-size: 1rem;
+  }
+}
+
+/* Prevent body scroll when mobile nav is active */
+body.mobile-nav-active {
+  overflow: hidden;
+}
+
+/* Smooth transitions for all interactive elements */
+.navmenu ul li a,
+.mobile-nav-toggle,
+#toggleBtn {
+  transition: all 0.3s ease;
+}
+
+/* Hamburger icon animation */
+.mobile-nav-toggle {
+  transition: transform 0.3s ease;
+  color:#121212;
+}
+
+.mobile-nav-toggle:hover {
+  color: #00CEC8;
+  transform: scale(1.1);
+}
+
+/* Dark/Light Mode Styles */
+body {
+  background-color: #121212;
+  color: #f1f1f1;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+body.light-mode {
+  background-color: white;
+  color: black;
+}
+
+.light-mode p, .light-mode h2 {
+  color: #333;
+}
+
+#toggleBtn {
+  padding: 10px 20px;
+  background-color: #222;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#toggleBtn:hover {
+  background-color: #357ABD;
+}
+
+/* Typewriter Effect */
+#typewriter {
+  padding-left: 30%;
+  font-family: monospace;
+  border-right: 2px solid black;
+  overflow-wrap: break-word;
+  display: inline-block;
+  animation: blink 0.7s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+/* Banner Styles */
+.banner_hero {
+  position: relative;
+  /* height: 70vh; */
+}
+
+.animated_banner {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+
+.banner_picture {
+  position: relative;
+  width: 100%;
+}
+
+.banner_picture img {
+  width: 125%;
+  height: auto;
+  display: block;
+}
+
+.text_container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 90%;
+  width: 100%;
+  text-align: center;
+  color: white;
+  z-index: 2;
+  padding: 20px;
+  border-radius: 10px;
+} 
+
+.text_container h1,
+.text_container h4 {
+  color: aliceblue;
+}
+
+/* About Styles */
+.about-image img {
+  max-width: 100%;
+  height: auto;
+  max-height: 1000px; /* Adjust this value as needed */
+  width: auto;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
+
+/* For mobile responsiveness */
+@media (max-width: 768px) {
+  .about-image img {
+    max-height: 50rem;
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-image img {
+    max-height: 250px;
+    max-width: 70%;
+  }
+}
+
+/* Skills Styles */
+.skills-buttons {
+  padding: 20px;
+}
+
+.span-pad {
+  margin-bottom: 20px;
+}
+
+.span-pad span {
+  display: inline-block;
+  background-color: #00CEC8;
+  color: white;
+  padding: 8px 15px;
+  margin: 5px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+/* Projects Styles */
+.portfolio-filters {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.portfolio-filters li {
+  padding: 8px 20px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 30px;
+  background-color: #f8f9fa;
+  color: #495057;
+  transition: all 0.3s ease;
+}
+
+.portfolio-filters li.filter-active,
+.portfolio-filters li:hover {
+  background-color: #00CEC8;
+  color: white;
+}
+
+.portfolio-card {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-5px);
+}
+
+.portfolio-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 206, 200, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.portfolio-card:hover .portfolio-overlay {
+  opacity: 1;
+}
+
+.portfolio-actions a {
+  color: white;
+  font-size: 1.5rem;
+  margin: 0 10px;
+}
+
+.portfolio-content {
+  padding: 20px;
+}
+
+.portfolio-content .category {
+  color: #00CEC8;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .text_container {
+    transform: none;
+    top: 15%;
+    left: 0;
+    margin-top: 20px;
+  }
+  
+  .banner_picture img {
+    width: 100%;
+  }
+  
+  .banner_hero {
+    height: 50vh;
+  }
+
+
+  .portfolio-filters li {
+    padding: 6px 15px;
+    font-size: 0.9rem;
+  }
+}
